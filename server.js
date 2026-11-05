@@ -182,9 +182,9 @@ app.use((req, res, next) => {
 
 // Shared by startup validateModels() and GET /v1/models?live=true.
 async function fetchLiveModelIds() {
-  const response = await fetch('https://integrate.api.nvidia.com/v1/models', {
-  headers: {
-    'Authorization': `Bearer ${NIM_API_KEY}`,
+  const response = await nim.get('/models', {
+    headers: {
+      Authorization: `Bearer ${NIM_API_KEY}`,
       'Content-Type': 'application/json'
     },
     timeout: VALIDATION_TIMEOUT_MS
